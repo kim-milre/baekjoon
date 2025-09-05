@@ -4,25 +4,27 @@
 using namespace std;
 
 int main(){
-	int n;
-	cin >> n;
+	int n, m;
+	scanf("%d %d", &n, &m);
 	
-	queue<int> num;
+	queue<int> q;
 	for(int i = 1; i <= n; i++){
-		num.push(i);
+		q.push(i);
 	}
 	
-	int k;
-	cin >> k;
-	
-	cout << "<";
-	while(--n){
-		for(int i = 0; i < k-1; i++){
-			num.push(num.front());
-			num.pop();
+	printf("<");
+	for(int j = 0; j < n - 1; j ++){
+		for(int k = 0; k < m - 1; k++){
+			q.push(q.front());
+			q.pop();
 		}
-		cout << num.front() << ", ";
-		num.pop();
+		
+		printf("%d, ", q.front());
+		q.pop();
 	}
-	cout << num.front() << ">" << endl;
+	printf("%d>", q.front());
+	
+	
+	
+	return 0;
 }
