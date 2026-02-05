@@ -9,22 +9,16 @@ int main() {
 	string s;
 	getline(cin, s);
 	
-	vector<tuple<int, int>> a(26);
-	for (int i = 0; i< 26; i++) {
-		get<0>(a[i]) = -1;
-		get<1>(a[i]) = 0;
-	}
+	vector<int> pos(26, -1);
 	
-	for (int i = 0; i < s.length(); i++) {
+	for(int i = 0; i < s.length(); i++){
 		int idx = s[i] - 'a';
-		if(get<1>(a[idx]) == 0){
-			get<0>(a[idx]) = i;
-			get<1>(a[idx]) = 1;
-		}
+		if(pos[idx] == -1)
+			pos[idx] = i;
 	}
 	
 	for (int i = 0; i< 26; i++) {
-		cout << get<0>(a[i]) << (i == 25 ? '\n' : ' ');
+		cout << pos[i] << (i == 25 ? '\n' : ' ');
 	}
 	return 0;
 }
